@@ -141,12 +141,16 @@ func (ec EntryCaller) TrimmedPath() string {
 // Entries are pooled, so any functions that accept them MUST be careful not to
 // retain references to them.
 type Entry struct {
-	Level      Level
-	Time       time.Time
-	LoggerName string
-	Message    string
-	Caller     EntryCaller
-	Stack      string
+	Level       Level
+	Time        time.Time
+	LoggerName  string
+	Message     string
+	Caller      EntryCaller
+	Stack       string
+	ServiceName string
+	ThreadName  string
+	TraceId     string
+	SpanId      string
 }
 
 // CheckWriteHook is a custom action that may be executed after an entry is

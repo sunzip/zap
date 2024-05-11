@@ -331,13 +331,19 @@ func (e *NameEncoder) UnmarshalText(text []byte) error {
 type EncoderConfig struct {
 	// Set the keys used for each log entry. If any key is empty, that portion
 	// of the entry is omitted.
-	MessageKey     string `json:"messageKey" yaml:"messageKey"`
-	LevelKey       string `json:"levelKey" yaml:"levelKey"`
-	TimeKey        string `json:"timeKey" yaml:"timeKey"`
-	NameKey        string `json:"nameKey" yaml:"nameKey"`
-	CallerKey      string `json:"callerKey" yaml:"callerKey"`
-	FunctionKey    string `json:"functionKey" yaml:"functionKey"`
-	StacktraceKey  string `json:"stacktraceKey" yaml:"stacktraceKey"`
+	MessageKey    string `json:"messageKey" yaml:"messageKey"`
+	LevelKey      string `json:"levelKey" yaml:"levelKey"`
+	TimeKey       string `json:"timeKey" yaml:"timeKey"`
+	NameKey       string `json:"nameKey" yaml:"nameKey"`
+	CallerKey     string `json:"callerKey" yaml:"callerKey"`
+	FunctionKey   string `json:"functionKey" yaml:"functionKey"`
+	StacktraceKey string `json:"stacktraceKey" yaml:"stacktraceKey"`
+
+	ServiceNameKey string `json:"serviceNameKey" yaml:"serviceNameKey"`
+	ThreadNameKey  string `json:"threadNameKey" yaml:"threadNameKey"`
+	TraceIdKey     string `json:"traceIdKey" yaml:"traceIdKey"`
+	SpanIdKey      string `json:"spanIdKey" yaml:"spanIdKey"`
+
 	SkipLineEnding bool   `json:"skipLineEnding" yaml:"skipLineEnding"`
 	LineEnding     string `json:"lineEnding" yaml:"lineEnding"`
 	// Configure the primitive representations of common complex types. For

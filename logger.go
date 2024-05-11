@@ -23,6 +23,7 @@ package zap
 import (
 	"fmt"
 	"io"
+	"math/rand"
 	"os"
 	"strings"
 
@@ -319,6 +320,16 @@ func (log *Logger) clone() *Logger {
 	return &clone
 }
 
+var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+func randStr(n int) string {
+	b := make([]rune, n)
+	for i := range b {
+		b[i] = letters[rand.Intn(len(letters))]
+	}
+	return string(b)
+}
+
 func (log *Logger) check(lvl zapcore.Level, msg string) *zapcore.CheckedEntry {
 	// Logger.check must always be called directly by a method in the
 	// Logger interface (e.g., Check, Info, Fatal).
@@ -335,10 +346,14 @@ func (log *Logger) check(lvl zapcore.Level, msg string) *zapcore.CheckedEntry {
 	// Create basic checked entry thru the core; this will be non-nil if the
 	// log message will actually be written somewhere.
 	ent := zapcore.Entry{
-		LoggerName: log.name,
-		Time:       log.clock.Now(),
-		Level:      lvl,
-		Message:    msg,
+		LoggerName:  log.name,
+		Time:        log.clock.Now(),
+		Level:       lvl,
+		Message:     msg,
+		ServiceName: "servericeName",
+		ThreadName:  "[main]",
+		TraceId:     "TxId:" + randStr(16),
+		SpanId:      "SpanId:" + randStr(16),
 	}
 	ce := log.core.Check(ent, nil)
 	willWrite := ce != nil

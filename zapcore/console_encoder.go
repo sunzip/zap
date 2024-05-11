@@ -70,6 +70,13 @@ func (c consoleEncoder) Clone() Encoder {
 func (c consoleEncoder) EncodeEntry(ent Entry, fields []Field) (*buffer.Buffer, error) {
 	line := bufferpool.Get()
 
+	nameEncoder := c.EncodeName
+
+	if nameEncoder == nil {
+		// Fall back to FullNameEncoder for backward compatibility.
+		nameEncoder = FullNameEncoder
+	}
+
 	// We don't want the entry's metadata to be quoted and escaped (if it's
 	// encoded as strings), which means that we can't use the JSON encoder. The
 	// simplest option is to use the memory encoder and fmt.Fprint.
@@ -79,6 +86,12 @@ func (c consoleEncoder) EncodeEntry(ent Entry, fields []Field) (*buffer.Buffer, 
 	arr := getSliceEncoder()
 	if c.TimeKey != "" && c.EncodeTime != nil && !ent.Time.IsZero() {
 		c.EncodeTime(ent.Time, arr)
+	}
+	if c.ServiceNameKey != "" {
+		nameEncoder(ent.ServiceName, arr)
+	}
+	if c.ThreadNameKey != "" {
+		nameEncoder(ent.ThreadName, arr)
 	}
 	if c.LevelKey != "" && c.EncodeLevel != nil {
 		c.EncodeLevel(ent.Level, arr)
@@ -100,6 +113,14 @@ func (c consoleEncoder) EncodeEntry(ent Entry, fields []Field) (*buffer.Buffer, 
 		if c.FunctionKey != "" {
 			arr.AppendString(ent.Caller.Function)
 		}
+	}
+
+	if c.TraceIdKey != "" {
+		nameEncoder(ent.TraceId, arr)
+	}
+
+	if c.SpanIdKey != "" {
+		nameEncoder(ent.SpanId, arr)
 	}
 	for i := range arr.elems {
 		if i > 0 {
