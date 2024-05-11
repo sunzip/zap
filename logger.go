@@ -27,9 +27,9 @@ import (
 	"os"
 	"strings"
 
-	"go.uber.org/zap/internal/bufferpool"
-	"go.uber.org/zap/internal/stacktrace"
-	"go.uber.org/zap/zapcore"
+	"github.com/sunzip/zap/internal/bufferpool"
+	"github.com/sunzip/zap/internal/stacktrace"
+	"github.com/sunzip/zap/zapcore"
 )
 
 // A Logger provides fast, leveled, structured logging. All methods are safe

@@ -26,10 +26,10 @@ import (
 	"strconv"
 	"testing"
 
-	"go.uber.org/zap/internal/exit"
-	"go.uber.org/zap/internal/ztest"
-	"go.uber.org/zap/zapcore"
-	"go.uber.org/zap/zaptest/observer"
+	"github.com/sunzip/zap/internal/exit"
+	"github.com/sunzip/zap/internal/ztest"
+	"github.com/sunzip/zap/zapcore"
+	"github.com/sunzip/zap/zaptest/observer"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

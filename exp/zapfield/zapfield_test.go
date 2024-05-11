@@ -25,8 +25,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
+	"github.com/sunzip/zap"
+	"github.com/sunzip/zap/zapcore"
 )
 
 type (

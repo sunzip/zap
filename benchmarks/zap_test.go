@@ -25,10 +25,10 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/sunzip/zap"
+	"github.com/sunzip/zap/internal/ztest"
+	"github.com/sunzip/zap/zapcore"
 	"go.uber.org/multierr"
-	"go.uber.org/zap"
-	"go.uber.org/zap/internal/ztest"
-	"go.uber.org/zap/zapcore"
 )
 
 var (

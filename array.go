@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"time"
 
-	"go.uber.org/zap/zapcore"
+	"github.com/sunzip/zap/zapcore"
 )
 
 // Array constructs a field with the given key and ArrayMarshaler. It provides

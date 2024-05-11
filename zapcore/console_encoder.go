@@ -23,9 +23,9 @@ package zapcore
 import (
 	"fmt"
 
-	"go.uber.org/zap/buffer"
-	"go.uber.org/zap/internal/bufferpool"
-	"go.uber.org/zap/internal/pool"
+	"github.com/sunzip/zap/buffer"
+	"github.com/sunzip/zap/internal/bufferpool"
+	"github.com/sunzip/zap/internal/pool"
 )
 
 var _sliceEncoderPool = pool.New(func() *sliceArrayEncoder {

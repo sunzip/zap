@@ -30,7 +30,7 @@ import (
 
 	"go.uber.org/multierr"
 	//revive:disable:dot-imports
-	. "go.uber.org/zap/zapcore"
+	. "github.com/sunzip/zap/zapcore"
 )
 
 type errTooManyUsers int

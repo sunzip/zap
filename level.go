@@ -23,8 +23,8 @@ package zap
 import (
 	"sync/atomic"
 
-	"go.uber.org/zap/internal"
-	"go.uber.org/zap/zapcore"
+	"github.com/sunzip/zap/internal"
+	"github.com/sunzip/zap/zapcore"
 )
 
 const (

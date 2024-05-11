@@ -23,7 +23,7 @@ package zap
 import (
 	"fmt"
 
-	"go.uber.org/zap/zapcore"
+	"github.com/sunzip/zap/zapcore"
 )
 
 // An Option configures a Logger.
