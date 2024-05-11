@@ -26,6 +26,7 @@ import (
 	"math/rand"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/sunzip/zap/internal/bufferpool"
 	"github.com/sunzip/zap/internal/stacktrace"
@@ -323,6 +324,7 @@ func (log *Logger) clone() *Logger {
 var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 func randStr(n int) string {
+	rand.Seed(time.Now().Unix())
 	b := make([]rune, n)
 	for i := range b {
 		b[i] = letters[rand.Intn(len(letters))]
