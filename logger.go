@@ -323,8 +323,11 @@ func (log *Logger) clone() *Logger {
 
 var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
-func randStr(n int) string {
+func init() {
 	rand.Seed(time.Now().Unix())
+}
+
+func randStr(n int) string {
 	b := make([]rune, n)
 	for i := range b {
 		b[i] = letters[rand.Intn(len(letters))]
