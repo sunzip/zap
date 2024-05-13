@@ -355,10 +355,10 @@ func (log *Logger) check(lvl zapcore.Level, msg string) *zapcore.CheckedEntry {
 		Time:        log.clock.Now(),
 		Level:       lvl,
 		Message:     msg,
-		ServiceName: "servericeName",
+		ServiceName: log.name, //"servericeName",
 		ThreadName:  "[main]",
-		TraceId:     "TxId:" + randStr(16),
-		SpanId:      "SpanId:" + randStr(16),
+		TraceId:     "[TxId:" + randStr(16),
+		SpanId:      "SpanId:" + randStr(16) + "]-",
 	}
 	ce := log.core.Check(ent, nil)
 	willWrite := ce != nil
